@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="../Styles/leaderboard.css">
+</head>
+<body>
+
+    <h1>Leaderboard</h1>
+
+    <!-- Toggle Button and Search Bar Container -->
+    <div class="top-controls">
+        <button id="back-button" onclick="window.location.href='menu.html'">◄</button>
+        <button id="toggle-filters" onclick="toggleFilters()">Filters</button>
+        <input type="text" id="username-search" placeholder="Search Username..." oninput="filterLeaderboard()">
+    </div>
+
+    <!-- Filters Container -->
+    <div id="filter-container">
+        <!-- Difficulty Filter -->
+        <div class="filter-group">
+            <span>Difficulty:</span>
+            <label><input type="radio" name="difficulty" value="" checked onclick="filterLeaderboard()"> All</label>
+            <label><input type="radio" name="difficulty" value="Easy" onclick="filterLeaderboard()"> Easy</label>
+            <label><input type="radio" name="difficulty" value="Medium" onclick="filterLeaderboard()"> Medium</label>
+            <label><input type="radio" name="difficulty" value="Hard" onclick="filterLeaderboard()"> Hard</label>
+        </div>
+
+        <!-- Game Type Filter -->
+        <div class="filter-group">
+            <span>Game Type:</span>
+            <label><input type="radio" name="type" value="" checked onclick="filterLeaderboard()"> All</label>
+            <label><input type="radio" name="type" value="Addition" onclick="filterLeaderboard()"> Addition</label>
+            <label><input type="radio" name="type" value="Subtraction" onclick="filterLeaderboard()"> Subtraction</label>
+        </div>
+
+        <!-- Sorting -->
+        <div class="filter-group">
+            <span>Sort by:</span>
+            <label><input type="radio" name="sort" value="score" onclick="filterLeaderboard()"> Score</label>
+            <label><input type="radio" name="sort" value="time" onclick="filterLeaderboard()"> Time Taken</label>
+        </div>
+    </div>
+
+    <!-- Leaderboard Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Difficulty</th>
+                <th>Type</th>
+                <th>Score</th>
+                <th>Time Taken</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <div id="pagination">
+        <button id="prevPage" onclick="changePage(-1)">Previous</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage" onclick="changePage(1)">Next</button>
+    </div>
+
+    <script src="../Scripts/leaderboard.js"></script>
+</body>
+</html>
